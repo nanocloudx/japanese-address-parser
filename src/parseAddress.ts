@@ -25,8 +25,6 @@ export function parseAddress(address: string) {
   address = convertKanjiNumbers(address)
   // 数字の後にある「丁目」や「番地」などを半角ハイフンに変換する
   address = convertToHalfWidthHyphen(address)
-  // スペースを削除する
-  address = address.replace(/\s/g, '')
 
   // 都道府県を抽出する
   let prefecture = extractPrefecture(address)

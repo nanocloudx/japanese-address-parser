@@ -1,8 +1,13 @@
 import prefectures from './prefectures.json'
 
-// 全角数字を半角数字に変換する
+// 全角数字やスペースを半角に変換する
 export function convertFullWidthToHalfWidth(address: string): string {
-  return address.replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+  return address.replace(/[０-９　]/g, (s) => {
+    if (s === '　') {
+      return ' '
+    }
+    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+  })
 }
 
 // 丁番表記の前にある漢数字を数字に変換する
