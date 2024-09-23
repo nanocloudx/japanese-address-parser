@@ -1,6 +1,7 @@
 # japanese-address-parser
 
-![Test](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yaml/badge.svg)
+[![Test](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yaml/badge.svg)](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yaml)
+
 
 A lightweight package to split Japanese addresses into prefecture, city, town, block, and building name.
 
