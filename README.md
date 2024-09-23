@@ -1,5 +1,7 @@
 # japanese-address-parser
 
+![Test](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yml/badge.svg)
+
 A lightweight package to split Japanese addresses into prefecture, city, town, block, and building name.
 
 ## Usage
@@ -36,13 +38,13 @@ console.log(postal) //'123-4567'
 - Chome and banchi (block and lot numbers) are converted to half-width hyphens.
 - Confusing horizontal lines are converted to half-width hyphens.
 
-## Disclaimer
+## Notice
 - This package only divides addresses from string patterns.
 - If there is an error in the address, only minimal corrections will be made.
 - Its simplicity, the accuracy of the parse results is not guaranteed.
 
-## License
-- This package is licensed under the MIT License.
-
 ## Acknowledgements
 - This package utilizes the prefecture data from [Geolonia Japanese Addresses](https://github.com/geolonia/japanese-addresses).
+
+## License
+- This package is licensed under the MIT License.
