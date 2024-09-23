@@ -16,17 +16,4 @@ describe('parseAddress', () => {
     })
   })
 
-  // it('住所が与えられなかった場合は何もしない', () => {
-  //   const address = ''
-  //   const result = parseAddress(address)
-  //   expect(result).toEqual({
-  //     prefecture: '',
-  //     city: '',
-  //     town: '',
-  //     block: '',
-  //     building: '',
-  //     full: '',
-  //     raw: '',
-  //   })
-  // })
 })

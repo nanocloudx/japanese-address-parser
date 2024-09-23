@@ -102,13 +102,8 @@ export function extractTown(address: string): string {
 
 // 番地を抽出する
 export function extractBlock(address: string): string {
-  const town = extractTown(address)
-  if (town) {
-    const townIndex = address.indexOf(town) + town.length
-    address = address.slice(townIndex)
-  }
-  const blockMatch = address.match(/^(\d+(-\d+)*)(.*)$/)
-  return blockMatch ? blockMatch[1] : ''
+  const blockMatch = address.match(/\d+-\d+-\d+/)
+  return blockMatch ? blockMatch[0] : ''
 }
 
 // 建物名を抽出する
