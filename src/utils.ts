@@ -2,9 +2,9 @@ import prefectures from './prefectures.json'
 
 // 全角数字やスペースを半角に変換する
 export function convertFullWidthToHalfWidth(address: string): string {
-  return address.replace(/[０-９　]/g, (s) => {
+  return address.replace(/[Ａ-Ｚａ-ｚ０-９　]/g, (s) => {
     if (s === '　') {
-      return ' '
+      return ' ';
     }
     return String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
   })
@@ -102,12 +102,13 @@ export function extractTown(address: string): string {
   if (blockMatch) {
     address = address.slice(0, blockMatch.index)
   }
-  return address.trim()
+  address = address.replace(/[A-Za-z0-9\-]+$/, '').trim()
+  return address
 }
 
 // 番地を抽出する
 export function extractBlock(address: string): string {
-  const blockMatch = address.match(/\d+(-\d+)*/)
+  const blockMatch = address.match(/[A-Za-z]?\d+(-\d+)*|[A-Za-z]-\d+/)
   return blockMatch ? blockMatch[0] : ''
 }
 
