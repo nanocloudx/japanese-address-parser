@@ -1,7 +1,8 @@
 {
   "name": "japanese-address-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight package to split Japanese addresses into prefecture, city, town, block, and building name.",
+  "keywords": ["japan", "address", "parser"],
   "author": "nanocloudx <nanocloudx@gmail.com> (https://wwww.dev)",
   "license": "MIT",
   "main": "index.js",
