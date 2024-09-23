@@ -98,6 +98,14 @@ export function extractTown(address: string): string {
     const cityIndex = address.indexOf(city) + city.length
     address = address.slice(cityIndex)
   }
+  if (!city) {
+    const prefecture = extractPrefecture(address)
+    if (prefecture) {
+      const prefectureIndex = address.indexOf(prefecture) + prefecture.length
+      address = address.slice(prefectureIndex)
+    }
+  }
+
   const blockMatch = address.match(/(\d+(-\d+)*)(.*)$/)
   if (blockMatch) {
     address = address.slice(0, blockMatch.index)

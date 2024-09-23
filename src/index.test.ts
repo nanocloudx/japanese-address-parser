@@ -16,6 +16,48 @@ describe('parseAddress', () => {
     })
   })
 
+  it('千代田区丸の内二丁目7番2号JPタワー', () => {
+    const address = '千代田区丸の内二丁目7番2号JPタワー'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      prefecture: '東京都',
+      city: '千代田区',
+      town: '丸の内',
+      block: '2-7-2',
+      building: 'JPタワー',
+      full: '東京都千代田区丸の内2-7-2 JPタワー',
+      raw: '千代田区丸の内二丁目7番2号JPタワー'
+    })
+  })
+
+  it('東京都丸の内二丁目7番2号JPタワー', () => {
+    const address = '東京都丸の内二丁目7番2号JPタワー'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      prefecture: '東京都',
+      city: '',
+      town: '丸の内',
+      block: '2-7-2',
+      building: 'JPタワー',
+      full: '東京都丸の内2-7-2 JPタワー',
+      raw: '東京都丸の内二丁目7番2号JPタワー'
+    })
+  })
+
+  it('丸の内二丁目7番2号JPタワー', () => {
+    const address = '丸の内二丁目7番2号JPタワー'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      prefecture: '',
+      city: '',
+      town: '丸の内',
+      block: '2-7-2',
+      building: 'JPタワー',
+      full: '丸の内2-7-2 JPタワー',
+      raw: '丸の内二丁目7番2号JPタワー'
+    })
+  })
+
   it('京都市上京区今出川通室町西入堀出シ町二八五番地', () => {
     const address = '京都市上京区今出川通室町西入堀出シ町二八五番地'
     const result = parseAddress(address)
@@ -43,5 +85,4 @@ describe('parseAddress', () => {
       raw: '鹿児島県志布志市志布志町志布志二丁目1番1号志布志市役所志布志支所'
     })
   })
-
 })
