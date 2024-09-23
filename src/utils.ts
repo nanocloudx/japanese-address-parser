@@ -38,8 +38,8 @@ export function convertKanjiNumbers(address: string): string {
 // 数字の後ろにある丁番表記を半角ハイフンに変換する
 export function convertToHalfWidthHyphen(address: string): string {
   return address
-    .replace(/(\d)(丁目|番地|番|号)/g, '$1-')
-    .replace(/(丁目|番地|番|号)/g, '')
+    .replace(/(\d)(丁目|番地の|番の|番地|番|号|の)/g, '$1-')
+    .replace(/(丁目|番地の|番の|番地|番|号)/g, '')
     .replace(/-(?!\d)/g, '')
 }
 

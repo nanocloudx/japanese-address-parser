@@ -38,7 +38,8 @@ console.log(postal) //'123-4567'
 
 ## Disclaimer
 - This package only divides addresses from string patterns.
-- Because of its simplicity, the accuracy of the analysis results is not guaranteed.
+- If there is an error in the address, only minimal corrections will be made.
+- Its simplicity, the accuracy of the parse results is not guaranteed.
 
 ## License
 - This package is licensed under the MIT License.

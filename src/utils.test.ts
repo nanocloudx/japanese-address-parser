@@ -39,6 +39,16 @@ describe('convertToHalfWidthHyphen', () => {
     const result = convertToHalfWidthHyphen(address)
     expect(result).toBe('丸の内1-2-3')
   })
+  it('数字の後ろにある丁番表記を半角ハイフンに変換する', () => {
+    const address = '丸の内1丁目2番の3号'
+    const result = convertToHalfWidthHyphen(address)
+    expect(result).toBe('丸の内1-2-3')
+  })
+  it('数字の後ろにある丁番表記を半角ハイフンに変換する', () => {
+    const address = '丸の内1丁目2の3'
+    const result = convertToHalfWidthHyphen(address)
+    expect(result).toBe('丸の内1-2-3')
+  })
 })
 
 describe('convertConfusingHyphens', () => {
