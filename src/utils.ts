@@ -102,7 +102,7 @@ export function extractTown(address: string): string {
 
 // 番地を抽出する
 export function extractBlock(address: string): string {
-  const blockMatch = address.match(/\d+-\d+-\d+/)
+  const blockMatch = address.match(/\d+(-\d+)*/)
   return blockMatch ? blockMatch[0] : ''
 }
 

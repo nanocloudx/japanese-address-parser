@@ -88,12 +88,21 @@ describe('extractTown', () => {
 
 describe('extractBlock', () => {
   it('番地を抽出する', () => {
-    const address = '東京都千代田区丸の内1-2-3JPタワー'
+    const address = '東京都千代田区丸の内1JPタワー'
     const block = extractBlock(address)
-    expect(block).toBe('1-2-3')
+    expect(block).toBe('1')
+  })
+  it('番地を抽出する', () => {
+    const address = '東京都千代田区丸の内1-2JPタワー'
+    const block = extractBlock(address)
+    expect(block).toBe('1-2')
+  })
+  it('番地を抽出する', () => {
+    const address = '東京都千代田区丸の内1-2-3-4-5JPタワー'
+    const block = extractBlock(address)
+    expect(block).toBe('1-2-3-4-5')
   })
 })
-
 describe('extractBuilding', () => {
   it('建物名を抽出する', () => {
     const address = '東京都千代田区丸の内1-2-3JPタワー'
