@@ -18,7 +18,9 @@ export function parseAddress(address: string) {
   if (!address) {
     return {postalCode: '', prefecture: '', city: '', town: '', block: '', building: '', full: '', raw}
   }
-  // 全角数字は半角数字に変換する
+  // スペースが含まれていたら削除する
+  address = address.replace(/\s+/g, '')
+  // 全角は半角に変換する
   address = convertFullWidthToHalfWidth(address)
   // 数字と数字の間に挟まれた横棒は全て半角ハイフンに変換する
   address = convertConfusingHyphens(address)

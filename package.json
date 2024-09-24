@@ -1,6 +1,6 @@
 {
   "name": "japanese-address-parser",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A lightweight package to split Japanese addresses into prefecture, city, town, block, and building name.",
   "keywords": [
     "japan",

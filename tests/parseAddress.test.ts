@@ -92,6 +92,21 @@ describe('parseAddress', () => {
     })
   })
 
+  it('余計なスペースが多い', () => {
+    const address = '〒100-0005　東京都　千代田区　丸の内　二丁目7番2号　JPタワー　東京中央郵便局'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      postalCode: '100-0005',
+      prefecture: '東京都',
+      city: '千代田区',
+      town: '丸の内',
+      block: '2-7-2',
+      building: 'JPタワー東京中央郵便局',
+      full: '東京都千代田区丸の内2-7-2 JPタワー東京中央郵便局',
+      raw: '〒100-0005　東京都　千代田区　丸の内　二丁目7番2号　JPタワー　東京中央郵便局'
+    })
+  })
+
   it('駐日英国大使館', () => {
     const address = '102-8381 東京都千代田区一番町1駐日英国大使館'
     const result = parseAddress(address)

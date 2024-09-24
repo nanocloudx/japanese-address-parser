@@ -7,6 +7,7 @@ import {
  */
 export function parsePostalCode(postal: string) {
   if (!postal) return ''
+  postal = postal.replace(/[\s　]+/g, '')
   // 文字列の先頭9文字を対象とする
   postal = postal.slice(0, 9)
   // 全角数字を半角数字に変換する
