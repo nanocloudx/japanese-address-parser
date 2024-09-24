@@ -57,6 +57,11 @@ describe('convertConfusingHyphens', () => {
     const result = convertConfusingHyphens(address)
     expect(result).toBe('丸の内1-2-3')
   })
+  it('数字と数字の間にある紛らわしい横棒を半角ハイフンに変換する', () => {
+    const address = '01一23─45ー67━89'
+    const result = convertConfusingHyphens(address)
+    expect(result).toBe('01-23-45-67-89')
+  })
 })
 
 describe('extractPrefecture', () => {

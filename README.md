@@ -32,7 +32,16 @@ import {parsePostalCode} from 'japanese-address-parser'
 
 const postal = parsePostalCode('１２３４５６７')
 
-console.log(postal) //'123-4567'
+console.log(postal) // '123-4567'
+```
+
+### Parse phone number
+```
+import {parsePhoneNumber} from 'japanese-address-parser'
+
+const phone = parsePhoneNumber('０３１２３４５６７８')
+
+console.log(phone) // '03-1234-5678'
 ```
 
 ## Features
@@ -42,6 +51,8 @@ console.log(postal) //'123-4567'
   - 丁目や番地などの表記は半角ハイフンに変換します
 - Confusing horizontal lines are converted to half-width hyphens.
   - 番地に含まれる紛らわしい横棒は半角ハイフンに変換します
+- Postal code and phone number parsers are also available
+  - 郵便番号と電話番号のパーサーも利用できます
 
 ## Notice
 - This package only divides addresses from string patterns.
@@ -52,9 +63,8 @@ console.log(postal) //'123-4567'
   - シンプルであるためパース結果の正確性は保証されません
 
 ## Acknowledgements
+- This package utilizes the phone number parser from [google-libphonenumber](https://www.npmjs.com/package/google-libphonenumber)
 - This package utilizes the prefectures data from [Geolonia Japanese Addresses](https://github.com/geolonia/japanese-addresses).
-  - このパッケージは Geolonia 住所データの都道府県一覧を利用しています
 
 ## License
 - This package is licensed under the MIT License.
-  - このパッケージは MIT ライセンスで提供されています
