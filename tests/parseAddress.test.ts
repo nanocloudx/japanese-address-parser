@@ -72,6 +72,34 @@ describe('parseAddress', () => {
     })
   })
 
+  it('京都府相楽郡南山城村南大河原北海道1', () => {
+    const address = '京都府相楽郡南山城村南大河原北海道1'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      prefecture: '京都府',
+      city: '相楽郡南山城村',
+      town: '南大河原北海道',
+      block: '1',
+      building: '',
+      full: '京都府相楽郡南山城村南大河原北海道1',
+      raw: '京都府相楽郡南山城村南大河原北海道1'
+    })
+  })
+
+  it('長野県長野市南長野南県町1000', () => {
+    const address = '長野県長野市南長野南県町1000'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      prefecture: '長野県',
+      city: '長野市',
+      town: '南長野南県町',
+      block: '1000',
+      building: '',
+      full: '長野県長野市南長野南県町1000',
+      raw: '長野県長野市南長野南県町1000'
+    })
+  })
+
   it('鹿児島県志布志市志布志町志布志二丁目1番1号志布志市役所志布志支所', () => {
     const address = '鹿児島県志布志市志布志町志布志二丁目1番1号志布志市役所志布志支所'
     const result = parseAddress(address)
