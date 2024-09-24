@@ -92,6 +92,21 @@ describe('parseAddress', () => {
     })
   })
 
+  it('駐日英国大使館', () => {
+    const address = '102-8381 東京都千代田区一番町1駐日英国大使館'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      postalCode: '102-8381',
+      prefecture: '東京都',
+      city: '千代田区',
+      town: '一番町',
+      block: '1',
+      building: '駐日英国大使館',
+      full: '東京都千代田区一番町1 駐日英国大使館',
+      raw: '102-8381 東京都千代田区一番町1駐日英国大使館'
+    })
+  })
+
   it('京都府', () => {
     const address = '京都市上京区今出川通室町西入堀出シ町二八五番地'
     const result = parseAddress(address)

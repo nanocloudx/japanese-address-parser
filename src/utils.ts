@@ -38,10 +38,11 @@ export function convertKanjiNumbers(address: string): string {
 
 // 数字の後ろにある丁番表記を半角ハイフンに変換する
 export function convertToHalfWidthHyphen(address: string): string {
-  return address
+  address = address
     .replace(/(\d)(丁目|番地の|番の|番地|番|号|の)/g, '$1-')
-    .replace(/(丁目|番地の|番の|番地|番|号)/g, '')
+    .replace(/-(丁目|番地の|番の|番地|番|号)/g, '')
     .replace(/-(?!\d)/g, '')
+  return address
 }
 
 // 数字と数字の間にある紛らわしい横棒を半角ハイフンに変換する
@@ -124,10 +125,9 @@ export function extractBlock(address: string, town: string): string {
 }
 
 // 建物名を抽出する
-export function extractBuilding(address: string, block: string): string {
-  if (block) {
-    const blockIndex = address.indexOf(block) + block.length
-    address = address.slice(blockIndex)
-  }
+export function extractBuilding(address: string, town: string, block: string): string {
+  // 番地が短いと郵便番号とご判定する可能性があるので町名と合わせて検索する
+  const blockIndex = address.indexOf(town + block) + town.length + block.length
+  address = address.slice(blockIndex)
   return address.trim()
 }
