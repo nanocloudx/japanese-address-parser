@@ -36,8 +36,8 @@ console.log(postal) //'123-4567'
 ```
 
 ## Features
-- Full-width numbers and kanji numbers are converted to half-width numbers.
-  - 全角文字の数字英語記号を半角文字に変換します
+- Converts full-width or Chinese numerals to half-width numerals.
+  - 全角数字や漢数字を半角数字に変換します
 - Chome and banchi (block and lot numbers) are converted to half-width hyphens.
   - 丁目や番地などの表記は半角ハイフンに変換します
 - Confusing horizontal lines are converted to half-width hyphens.
@@ -47,7 +47,7 @@ console.log(postal) //'123-4567'
 - This package only divides addresses from string patterns.
   - このパッケージは住所のパターンから文字列を分割するのみです
 - If there is an error in the address, only minimal corrections will be made.
-  - 住所の訂正は最小限のみ行います
+  - 住所の訂正は最小限のみ行います(住所クレンジングには利用できません)
 - Its simplicity, the accuracy of the parse results is not guaranteed.
   - シンプルであるためパース結果の正確性は保証されません
 
