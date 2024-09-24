@@ -3,8 +3,8 @@
 [![Test](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yaml/badge.svg)](https://github.com/nanocloudx/japanese-address-parser/actions/workflows/test.yaml)
 
 
-A lightweight package to split Japanese addresses into prefecture, city, town, block, and building name.  
-日本の住所文字列を都道府県、市区町村、町域、番地、建物名に分割する軽量なパッケージです
+A lightweight package to split Japanese addresses into postal code, prefecture, city, town, block, and buildings.  
+日本の住所文字列を郵便番号、都道府県、市区町村、町域、番地、建物名に分割する軽量なパッケージです
 
 ## Usage
 
@@ -12,17 +12,18 @@ A lightweight package to split Japanese addresses into prefecture, city, town, b
 ```
 import {parseAddress} from 'japanese-address-parser'
 
-const address = parseAddress('東京都千代田区丸の内二丁目7番2号JPタワー')
+const address = parseAddress('〒1000005 東京都千代田区丸の内二丁目7番2号JPタワー')
 
 console.log(address)
 // {
+//   postalCode: '100-0005',
 //   prefecture: '東京都',
 //   city: '千代田区',
 //   town: '丸の内',
 //   block: '2-7-2',
 //   building: 'JPタワー',
 //   full: '東京都千代田区丸の内2-7-2 JPタワー'
-//   raw: '東京都千代田区丸の内二丁目7番2号JPタワー'
+//   raw: '〒1000005 東京都千代田区丸の内二丁目7番2号JPタワー'
 // }
 ```
 

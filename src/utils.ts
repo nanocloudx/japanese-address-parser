@@ -1,4 +1,5 @@
 import prefectures from './prefectures.json'
+import {parsePostalCode} from './parsePostalCode'
 
 // 全角数字やスペースを半角に変換する
 export function convertFullWidthToHalfWidth(address: string): string {
@@ -52,8 +53,9 @@ export function convertConfusingHyphens(address: string): string {
 export function extractPrefecture(address: string): string {
   let prefecture = ''
   const prefectureList = Object.keys(prefectures)
+  const searchRange = address.slice(0, 14)
   for (const pref of prefectureList) {
-    if (address.startsWith(pref)) {
+    if (searchRange.includes(pref)) {
       prefecture = pref
       break
     }
@@ -64,7 +66,8 @@ export function extractPrefecture(address: string): string {
 // 市区町村を抽出する
 export function extractCity(address: string, prefecture: string): string {
   if (prefecture) {
-    address = address.slice(prefecture.length)
+    const prefIndex = address.indexOf(prefecture) + prefecture.length
+    address = address.slice(prefIndex)
   }
   // 市区町村を抽出する
   let city = ''
@@ -111,7 +114,11 @@ export function extractTown(address: string, city: string): string {
 }
 
 // 番地を抽出する
-export function extractBlock(address: string): string {
+export function extractBlock(address: string, town: string): string {
+  if (town) {
+    const townIndex = address.indexOf(town) + town.length
+    address = address.slice(townIndex)
+  }
   const blockMatch = address.match(/[A-Za-z]?\d+(-\d+)*|[A-Za-z]-\d+/)
   return blockMatch ? blockMatch[0] : ''
 }
