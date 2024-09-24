@@ -29,17 +29,17 @@ export function parseAddress(address: string) {
   // 都道府県を抽出する
   let prefecture = extractPrefecture(address)
   // 市区町村を抽出する
-  const city = extractCity(address)
+  const city = extractCity(address, prefecture)
   // 都道府県が無い場合、市区町村から推定する
   if (!prefecture && city) {
     prefecture = inferPrefectureFromCity(city)
   }
   // 町名を抽出する
-  const town = extractTown(address)
+  const town = extractTown(address, city)
   // 番地を抽出する
   const block = extractBlock(address)
   // 建物名を抽出する
-  const building = extractBuilding(address)
+  const building = extractBuilding(address, block)
   // 全て結合したものを作成
   const full = `${prefecture}${city}${town}${block}${building ? ' ' + building : ''}`
 

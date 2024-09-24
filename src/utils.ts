@@ -62,9 +62,7 @@ export function extractPrefecture(address: string): string {
 }
 
 // 市区町村を抽出する
-export function extractCity(address: string): string {
-  // 都道府県名を取り除く
-  const prefecture = extractPrefecture(address)
+export function extractCity(address: string, prefecture: string): string {
   if (prefecture) {
     address = address.slice(prefecture.length)
   }
@@ -92,8 +90,7 @@ export function inferPrefectureFromCity(city: string): string {
 }
 
 // 町名を抽出する
-export function extractTown(address: string): string {
-  const city = extractCity(address)
+export function extractTown(address: string, city: string): string {
   if (city) {
     const cityIndex = address.indexOf(city) + city.length
     address = address.slice(cityIndex)
@@ -105,7 +102,6 @@ export function extractTown(address: string): string {
       address = address.slice(prefectureIndex)
     }
   }
-
   const blockMatch = address.match(/(\d+(-\d+)*)(.*)$/)
   if (blockMatch) {
     address = address.slice(0, blockMatch.index)
@@ -121,8 +117,7 @@ export function extractBlock(address: string): string {
 }
 
 // 建物名を抽出する
-export function extractBuilding(address: string): string {
-  const block = extractBlock(address)
+export function extractBuilding(address: string, block: string): string {
   if (block) {
     const blockIndex = address.indexOf(block) + block.length
     address = address.slice(blockIndex)

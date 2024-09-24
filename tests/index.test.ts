@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest'
-import { parseAddress } from './index'
+import { parseAddress } from '../src'
 
 describe('parseAddress', () => {
   it('東京都千代田区丸の内二丁目7番2号JPタワー', () => {

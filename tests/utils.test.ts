@@ -10,7 +10,7 @@ import {
   extractTown,
   extractBlock,
   extractBuilding
-} from './utils'
+} from '../src/utils'
 
 describe('convertFullWidthToHalfWidth', () => {
   it('全角数字を半角数字に変換する', () => {
@@ -70,7 +70,7 @@ describe('extractPrefecture', () => {
 describe('extractCity', () => {
   it('市区町村を抽出する', () => {
     const address = '東京都千代田区丸の内1-2-3JPタワー'
-    const city = extractCity(address)
+    const city = extractCity(address, '東京都')
     expect(city).toBe('千代田区')
   })
 })
@@ -91,7 +91,7 @@ describe('inferPrefectureFromCity', () => {
 describe('extractTown', () => {
   it('町名を抽出する', () => {
     const address = '東京都千代田区丸の内1-2-3JPタワー'
-    const town = extractTown(address)
+    const town = extractTown(address, '千代田区')
     expect(town).toBe('丸の内')
   })
 })
@@ -116,7 +116,7 @@ describe('extractBlock', () => {
 describe('extractBuilding', () => {
   it('建物名を抽出する', () => {
     const address = '東京都千代田区丸の内1-2-3JPタワー'
-    const building = extractBuilding(address)
+    const building = extractBuilding(address, '1-2-3')
     expect(building).toBe('JPタワー')
   })
 })
