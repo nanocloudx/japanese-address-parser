@@ -39,9 +39,9 @@ export function convertKanjiNumbers(address: string): string {
 // 数字の後ろにある丁番表記を半角ハイフンに変換する
 export function convertToHalfWidthHyphen(address: string): string {
   address = address
-    .replace(/(\d)(丁目|番地の|番の|番地|番|号|の)/g, '$1-')
-    .replace(/-(丁目|番地の|番の|番地|番|号)/g, '')
-    .replace(/-(?!\d)/g, '')
+    .replace(/(\d)(丁目|丁|番地の|番の|番地|番|号|組|の)/g, '$1-')
+    .replace(/-(丁目|丁|番地の|番の|番地|番|号|組)/g, '')
+    .replace(/-$/, '')
   return address
 }
 
@@ -120,14 +120,20 @@ export function extractBlock(address: string, town: string): string {
     const townIndex = address.indexOf(town) + town.length
     address = address.slice(townIndex)
   }
-  const blockMatch = address.match(/[A-Za-z]?\d+(-\d+)*|[A-Za-z]-\d+/)
+  const blockMatch = address.match(/[ABC\d]+(-[(渡辺|東)\d]+)*/)
   return blockMatch ? blockMatch[0] : ''
 }
 
 // 建物名を抽出する
 export function extractBuilding(address: string, town: string, block: string): string {
+  if (!town && !block) {
+    return ''
+  }
   // 番地が短いと郵便番号とご判定する可能性があるので町名と合わせて検索する
   const blockIndex = address.indexOf(town + block) + town.length + block.length
-  address = address.slice(blockIndex)
-  return address.trim()
+  address = address.slice(blockIndex).trim()
+  if (address.startsWith('-')) {
+    address = address.slice(1).trim()
+  }
+  return address
 }

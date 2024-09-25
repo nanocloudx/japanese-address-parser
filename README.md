@@ -57,9 +57,11 @@ console.log(phone) // '03-1234-5678'
 
 ## Notice
 - This package only divides addresses from string patterns.
-  - このパッケージは住所のパターンから文字列を分割するのみです
+  - このパッケージは住所のパターンから文字列を判定しています
 - If there is an error in the address, only minimal corrections will be made.
-  - 住所の訂正は最小限のみ行います(住所クレンジングには利用できません)
+  - 住所の訂正は最小限のみ行います (住所クレンジングには利用できません)
+- Special address formats are largely unsupported.
+  - 特殊な住所フォーマットにはほとんど対応していません (例：石川県金沢市利屋町など)
 - Its simplicity, the accuracy of the parse results is not guaranteed.
   - シンプルであるためパース結果の正確性は保証されません
 
