@@ -135,6 +135,8 @@ export function extractBuilding(address: string, town: string, block: string): s
   const blockIndex = address.indexOf(town + block) + town.length + block.length
   address = address.slice(blockIndex).trim()
   if (address.startsWith('-')) {
+    // TODO FIXME 建物名の１文字目がハイフンの場合、部屋番号などが番地に含まれてしまっている可能性があるので要修正
+    // 例えば「丸の内1-2-3 1-A」みたいな住所だと、序盤でスペースが消されてしまっているので「丸の内1-2-31」と「-A」になり失敗する
     address = address.slice(1).trim()
   }
   return address
