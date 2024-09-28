@@ -118,6 +118,10 @@ export function extractTown(address: string, city: string): string {
 export function extractBlock(address: string, city: string = '', town: string = ''): string {
   const townIndex = address.indexOf(city + town) + (city.length + town.length)
   address = address.slice(townIndex)
+  // address の末尾が階数の場合、それを除外する
+  const floorMatch = address.match(/\-\d+階/)
+  address = floorMatch ? address.slice(0, floorMatch.index) : address
+  // 番地を抽出する
   const blockMatch = address.match(/^\d+(-\d+)*/)
   return blockMatch ? blockMatch[0] : ''
 }
@@ -127,7 +131,7 @@ export function extractBuilding(address: string, town: string, block: string): s
   if (!town && !block) {
     return ''
   }
-  // 番地が短いと郵便番号とご判定する可能性があるので町名と合わせて検索する
+  // 番地が短いと郵便番号と誤判定する可能性があるので町名と合わせて検索する
   const blockIndex = address.indexOf(town + block) + town.length + block.length
   address = address.slice(blockIndex).trim()
   if (address.startsWith('-')) {

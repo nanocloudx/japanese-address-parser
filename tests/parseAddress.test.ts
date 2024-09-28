@@ -242,7 +242,7 @@ describe('parseAddress', () => {
     })
   })
 
-  it('南巨摩郡南部町南部８０５０－１', () => {
+  it('南巨摩郡南部町南部８０５０－１(市区町村名と町域が重複する)', () => {
     const address = '南巨摩郡南部町南部８０５０－１'
     const result = parseAddress(address)
     expect(result).toEqual({
@@ -254,6 +254,21 @@ describe('parseAddress', () => {
       building: '',
       full: '山梨県南巨摩郡南部町南部8050-1',
       raw: '南巨摩郡南部町南部８０５０－１'
+    })
+  })
+
+  it('番地と階数が繋がっている', () => {
+    const address = '東京都丸の内二丁目7番2号10階'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      postalCode: '',
+      prefecture: '東京都',
+      city: '',
+      town: '丸の内',
+      block: '2-7-2',
+      building: '10階',
+      full: '東京都丸の内2-7-2 10階',
+      raw: '東京都丸の内二丁目7番2号10階'
     })
   })
 
