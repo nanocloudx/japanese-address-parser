@@ -19,7 +19,7 @@ export function parseAddress(address: string) {
     return {postalCode: '', prefecture: '', city: '', town: '', block: '', building: '', full: '', raw}
   }
   // スペースが含まれていたら削除する
-  address = address.replace(/\s+/g, '')
+  address = address.replace(/[\s\u3000]+/g, '')
   // 全角は半角に変換する
   address = convertFullWidthToHalfWidth(address)
   // 数字と数字の間に挟まれた横棒は全て半角ハイフンに変換する

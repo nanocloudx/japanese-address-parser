@@ -102,20 +102,25 @@ describe('extractTown', () => {
 })
 
 describe('extractBlock', () => {
-  it('番地を抽出する', () => {
+  it('番地を抽出する1', () => {
     const address = '東京都千代田区丸の内1JPタワー'
     const block = extractBlock(address, '丸の内')
     expect(block).toBe('1')
   })
-  it('番地を抽出する', () => {
+  it('番地を抽出する2', () => {
     const address = '東京都千代田区丸の内1-2JPタワー'
     const block = extractBlock(address, '丸の内')
     expect(block).toBe('1-2')
   })
-  it('番地を抽出する', () => {
+  it('番地を抽出する3', () => {
     const address = '東京都千代田区丸の内1-2-3-4-5JPタワー'
     const block = extractBlock(address, '丸の内')
     expect(block).toBe('1-2-3-4-5')
+  })
+  it('番地を抽出する4', () => {
+    const address = '東京都千代田区有楽町2-10-1東京交通会館'
+    const block = extractBlock(address, '有楽町')
+    expect(block).toBe('2-10-1')
   })
 })
 describe('extractBuilding', () => {

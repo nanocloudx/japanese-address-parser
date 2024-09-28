@@ -271,4 +271,19 @@ describe('parseAddress', () => {
       raw: '京都市上京区今出川通室町西入堀出シ町二八五番地'
     })
   })
+
+  it('有楽町パスポートセンター', () => {
+    const address = '千代田区有楽町二丁目１０番１号　東京交通会館２階２０７号室'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      postalCode: '',
+      prefecture: '東京都',
+      city: '千代田区',
+      town: '有楽町',
+      block: '2-10-1',
+      building: '東京交通会館2階207',
+      full: '東京都千代田区有楽町2-10-1 東京交通会館2階207',
+      raw: '千代田区有楽町二丁目１０番１号　東京交通会館２階２０７号室'
+    })
+  })
 })
