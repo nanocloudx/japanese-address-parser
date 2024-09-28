@@ -152,51 +152,6 @@ describe('parseAddress', () => {
     })
   })
 
-  it('大阪市中央区久太郎町(番地が渡辺)', () => {
-    const address = '大阪府大阪市中央区久太郎町4丁目渡辺'
-    const result = parseAddress(address)
-    expect(result).toEqual({
-      postalCode: '',
-      prefecture: '大阪府',
-      city: '大阪市中央区',
-      town: '久太郎町',
-      block: '4-渡辺',
-      building: '',
-      full: '大阪府大阪市中央区久太郎町4-渡辺',
-      raw: '大阪府大阪市中央区久太郎町4丁目渡辺'
-    })
-  })
-
-  it('大阪市中央区上町(丁目がABC)', () => {
-    const address = '大阪府大阪市中央区上町Ａ-1-1'
-    const result = parseAddress(address)
-    expect(result).toEqual({
-      postalCode: '',
-      prefecture: '大阪府',
-      city: '大阪市中央区',
-      town: '上町',
-      block: 'A-1-1',
-      building: '',
-      full: '大阪府大阪市中央区上町A-1-1',
-      raw: '大阪府大阪市中央区上町Ａ-1-1'
-    })
-  })
-
-  it('道頓堀一丁目(東3のような表記)', () => {
-    const address = '大阪府大阪市中央区道頓堀一丁目東3番地26号大阪高津郵便局'
-    const result = parseAddress(address)
-    expect(result).toEqual({
-      postalCode: '',
-      prefecture: '大阪府',
-      city: '大阪市中央区',
-      town: '道頓堀',
-      block: '1-東3-26',
-      building: '大阪高津郵便局',
-      full: '大阪府大阪市中央区道頓堀1-東3-26 大阪高津郵便局',
-      raw: '大阪府大阪市中央区道頓堀一丁目東3番地26号大阪高津郵便局'
-    })
-  })
-
   it('大阪府堺市(丁のような表記)', () => {
     const address = '大阪府堺市堺区百舌鳥夕雲町1丁1'
     const result = parseAddress(address)
@@ -284,6 +239,51 @@ describe('parseAddress', () => {
       building: '東京交通会館2階207',
       full: '東京都千代田区有楽町2-10-1 東京交通会館2階207',
       raw: '千代田区有楽町二丁目１０番１号　東京交通会館２階２０７号室'
+    })
+  })
+
+  it('大阪市中央区久太郎町(番地が渡辺なので失敗する)', () => {
+    const address = '大阪府大阪市中央区久太郎町4丁目渡辺'
+    const result = parseAddress(address)
+    expect(result).not.toEqual({
+      postalCode: '',
+      prefecture: '大阪府',
+      city: '大阪市中央区',
+      town: '久太郎町',
+      block: '4-渡辺',
+      building: '',
+      full: '大阪府大阪市中央区久太郎町4-渡辺',
+      raw: '大阪府大阪市中央区久太郎町4丁目渡辺'
+    })
+  })
+
+  it('大阪市中央区上町(丁目がABCなので失敗する)', () => {
+    const address = '大阪府大阪市中央区上町Ａ-1-1'
+    const result = parseAddress(address)
+    expect(result).not.toEqual({
+      postalCode: '',
+      prefecture: '大阪府',
+      city: '大阪市中央区',
+      town: '上町',
+      block: 'A-1-1',
+      building: '',
+      full: '大阪府大阪市中央区上町A-1-1',
+      raw: '大阪府大阪市中央区上町Ａ-1-1'
+    })
+  })
+
+  it('道頓堀一丁目(東3のような表記なので失敗する)', () => {
+    const address = '大阪府大阪市中央区道頓堀一丁目東3番地26号大阪高津郵便局'
+    const result = parseAddress(address)
+    expect(result).not.toEqual({
+      postalCode: '',
+      prefecture: '大阪府',
+      city: '大阪市中央区',
+      town: '道頓堀',
+      block: '1-東3-26',
+      building: '大阪高津郵便局',
+      full: '大阪府大阪市中央区道頓堀1-東3-26 大阪高津郵便局',
+      raw: '大阪府大阪市中央区道頓堀一丁目東3番地26号大阪高津郵便局'
     })
   })
 })
