@@ -120,7 +120,13 @@ export function extractBlock(address: string, town: string): string {
     const townIndex = address.indexOf(town) + town.length
     address = address.slice(townIndex)
   }
-  const blockMatch = address.match(/[ABC\d]+(-[(渡辺|東)\d]+)*/)
+  if (!town) {
+    const prefecture = extractPrefecture(address)
+    const city = extractCity(address, prefecture)
+    const cityIndex = address.indexOf(city) + city.length
+    address = address.slice(cityIndex)
+  }
+  const blockMatch = address.match(/^([ABC\d]+(-[渡辺|東|\d]+(-\d+)*)*|\d+)/)
   return blockMatch ? blockMatch[0] : ''
 }
 
