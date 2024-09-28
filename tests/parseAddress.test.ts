@@ -242,6 +242,21 @@ describe('parseAddress', () => {
     })
   })
 
+  it('南巨摩郡南部町南部８０５０－１', () => {
+    const address = '南巨摩郡南部町南部８０５０－１'
+    const result = parseAddress(address)
+    expect(result).toEqual({
+      postalCode: '',
+      prefecture: '山梨県',
+      city: '南巨摩郡南部町',
+      town: '南部',
+      block: '8050-1',
+      building: '',
+      full: '山梨県南巨摩郡南部町南部8050-1',
+      raw: '南巨摩郡南部町南部８０５０－１'
+    })
+  })
+
   it('大阪市中央区久太郎町(番地が渡辺なので失敗する)', () => {
     const address = '大阪府大阪市中央区久太郎町4丁目渡辺'
     const result = parseAddress(address)

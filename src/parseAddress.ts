@@ -42,7 +42,7 @@ export function parseAddress(address: string) {
   // 町名を抽出する
   const town = extractTown(address, city)
   // 番地を抽出する
-  const block = extractBlock(address, town)
+  const block = extractBlock(address, city, town)
   // 建物名を抽出する
   const building = extractBuilding(address, town, block)
   // 全て結合したものを作成

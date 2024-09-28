@@ -115,17 +115,9 @@ export function extractTown(address: string, city: string): string {
 }
 
 // 番地を抽出する
-export function extractBlock(address: string, town: string): string {
-  if (town) {
-    const townIndex = address.indexOf(town) + town.length
-    address = address.slice(townIndex)
-  }
-  if (!town) {
-    const prefecture = extractPrefecture(address)
-    const city = extractCity(address, prefecture)
-    const cityIndex = address.indexOf(city) + city.length
-    address = address.slice(cityIndex)
-  }
+export function extractBlock(address: string, city: string = '', town: string = ''): string {
+  const townIndex = address.indexOf(city + town) + (city.length + town.length)
+  address = address.slice(townIndex)
   const blockMatch = address.match(/^\d+(-\d+)*/)
   return blockMatch ? blockMatch[0] : ''
 }
